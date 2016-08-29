@@ -1,0 +1,54 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="KeepFocus.WithActionBar.Common" parent="@android:style/Theme.DeviceDefault.Light">
+    </style>
+    <style name="DetailActivityTheme" parent="KeepFocus.WithActionBar.Common">
+        <item name="android:actionBarStyle">@style/MainActionBarTheme</item>
+        <item name="android:actionMenuTextColor">@color/main_action_bar_menu_title_color</item>
+    </style>
+    <style name="MainActionBarTheme" parent="android:Widget.DeviceDefault.ActionBar">
+        <item name="android:displayOptions">showTitle</item>
+        <item name="android:background">@color/main_action_bar_bg</item>
+        <item name="android:height">@dimen/main_action_bar_height</item>
+        <item name="android:titleTextStyle">@style/ActionTitleTextStyle</item>
+    </style>
+    <style name="ActionTitleTextStyle" parent="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/main_action_bar_title_color</item>
+        <item name="android:textSize">@dimen/main_action_bar_title_text_size</item>
+    </style>
+    <style name="list_title_text_style">
+        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
+    </style>
+
+    <style name="dialog_body_text_style">
+        <item name="android:textColor">@color/alert_dialog_text_color</item>
+        <item name="android:textSize">@dimen/alert_dialog_text_size</item>
+        <item name="android:lineSpacingExtra">@dimen/alert_dialog_text_line_spacing_extra</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceListItem</item>
+    </style>
+    <style name="PauseDialog" parent="@android:style/Theme.Dialog">
+            <item name="android:windowTitleStyle">@style/PauseDialogTitle</item>
+    </style>
+    <style name="PauseDialogTitle" parent="@android:style/TextAppearance.DialogWindowTitle">
+            <item name="android:gravity">center_horizontal</item>
+            <item name="android:textSize">16sp</item>
+            <item name="android:textStyle">bold</item>
+    </style>
+</resources>

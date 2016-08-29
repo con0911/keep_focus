@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/setting"
+        android:title="@string/popup_setting"/>
+    <item
+        android:id="@+id/about"
+        android:title="@string/popup_about"/>
+    <item
+        android:title="NotiCount"
+        android:id="@+id/badge"
+        android:actionLayout="@layout/notifications_update_count"
+        android:icon="@drawable/shape_notifications"
+        android:showAsAction="always">
+    </item> 
+</menu>

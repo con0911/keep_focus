@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.accessibility.keepfocus"
+    android:versionCode="201512"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission
+        xmlns:tools="http://schemas.android.com/tools"
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_keepfocus"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver
+            android:name="com.accessibility.keepfocus.receiver.KeepFocusReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.accessibility.keepfocus.receiver.UninstallReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter >
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.accessibility.keepfocus.services.BlockLaunchService"
+            android:enabled="true" >
+        </service>
+
+        <activity
+            android:name="com.accessibility.keepfocus.activity.BlockNotificationActivity"
+            android:label="@string/app_name"
+            android:theme="@style/DetailActivityTheme" 
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name="com.accessibility.keepfocus.activity.ProfileEditActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.accessibility.keepfocus.activity.BlockNotificationActivity"
+            android:theme="@style/DetailActivityTheme" 
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name="com.accessibility.keepfocus.activity.InstalledAppActivity"
+            android:parentActivityName="com.accessibility.keepfocus.activity.ProfileEditActivity"
+            android:theme="@style/DetailActivityTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name="com.accessibility.keepfocus.activity.BlockLauncher" 
+            android:theme="@style/DetailActivityTheme">
+        </activity>
+
+        <activity android:name="com.accessibility.keepfocus.settings.KeepFocusMainSettings" 
+            android:parentActivityName="com.accessibility.keepfocus.activity.BlockNotificationActivity"
+            android:theme="@style/DetailActivityTheme"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name="com.accessibility.keepfocus.activity.AboutActivity"
+            android:label="@string/about_s_keep_focus"
+            android:parentActivityName="com.accessibility.keepfocus.activity.BlockNotificationActivity"
+            android:theme="@style/DetailActivityTheme">
+        </activity>
+        <activity android:name="com.accessibility.keepfocus.settings.SetPinCode"
+            android:theme="@style/DetailActivityTheme" >
+        </activity>
+        
+        <activity android:name="com.accessibility.keepfocus.settings.LockColorActivity" 
+            android:theme="@style/DetailActivityTheme">
+        </activity>
+        
+        <activity android:name="com.accessibility.keepfocus.settings.LockConfirmActivity" 
+            android:theme="@style/DetailActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <service
+            android:name="com.accessibility.keepfocus.services.KeepFocusMainService"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
